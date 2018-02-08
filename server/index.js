@@ -2,11 +2,12 @@ const express = require('express'),
       json = require('json'),
       massive = require('massive'),
       bodyParser = require('body-parser'),
-      http = require('http'),
+      http = require('http');
 
 
 
-var app = express();
+const app = express();
+app.use(bodyParser.json());
 
 //massive(`postgres://${dbUser}:${dbPass}@localhost/${database}`).then(function(db){
 //	app.set('db', db)}).catch(function(e){console.log(e);});
@@ -19,14 +20,15 @@ var app = express();
 // 	saveUninitialized: true
 //     }));
 
-app.use(express.static(__dirname + '/view'));
+app.use(express.static(__dirname + '/public'));
 
 //app.get('/proof/:book/:prop', (req, res, next) => {
 //    res.redirect(`/proof.html?book=${req.params.book}`
 //}
 
-app.get('/api/proof/:book/:prop', (req, res, next) => { 
-    res.json(require(`./proofs/${req.params.book}/${req.params.prop}.json`));
+app.post('/sub', (req, res, next) => {
+  console.log(req.body);
+  res.json({key: "value"});
 })
     // .get('/sessiontest', (req, res, next) => {
     // 	if(req.session.views) {
