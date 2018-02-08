@@ -18,6 +18,7 @@ class Form extends React.Component {
     console.log(error);
   });
     console.log("submitting!");
+    e.target.elements.firstname.value="";
   }
   render(){
     return (
@@ -27,7 +28,7 @@ class Form extends React.Component {
           <input id="firstname" type="text" name="firstname" /><br />
           male<input id="male" type="radio" name="sex" value="male"/><br />
           female<input id="female" type ="radio" name="sex" value="female" />
-          <button>Submit</button>
+          <button id="sub">Submit</button>
         </form>
       </div>
   );
